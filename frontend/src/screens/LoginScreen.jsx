@@ -6,6 +6,7 @@ import FormContainer from "../components/FormContainer.jsx"
 import {useLoginMutation} from "../slices/usersApiSlice.js"
 import {setCredentials} from "../slices/authSlice.js"
 import {toast} from "react-toastify";
+import Loader from "../components/Loader.jsx";
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
@@ -60,12 +61,15 @@ const LoginScreen = () => {
                 </Form.Group>
 
                 <Button
+                    disabled={isLoading}
                     type='submit'
                     variant='primary'
                     className='mt-3'
                 >
                     Sign In
                 </Button>
+
+                {isLoading && <Loader />}
 
                 <Row className='py-3'>
                     <Col>
